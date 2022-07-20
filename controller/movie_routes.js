@@ -1,8 +1,7 @@
 const express = require('express')
-
 const router = express.Router()
-
 const Movie = require('../models/movie')
+const fetch = require('node-fetch')
 
 // DELETE - Delete
 router.delete('/:id', (req, res) => {
@@ -30,6 +29,30 @@ router.get('/:id/edit', (req, res) => {
         })
 })
 
+// //SEARCH ROUTE
+// router.post('/search', (req, res) => {
+//     // console.log(req.body, 'working')
+// const search = req.body.title
+//     fetch(`https://www.omdbapi.com/?apikey=632b0bdc&s=${search}`)
+//         .then(res => res.json())
+//         .then(data => {
+
+//                     Movie.create(info)
+//                         .then(data => {
+//                             console.log(info)
+//                             db.close()
+//                         })
+//                         .catch(error => {
+//                             console.log('error:', error)
+//                             db.close()
+//                         })
+//                 })
+//                 .catch(error => {
+//                     console.log('error:', error)
+//                     db.close()
+//                 })
+//         })
+
 // PUT - Update
 //localhost:3000/fruits/:id
 router.put('/:id', (req, res) => {
@@ -56,11 +79,6 @@ router.get('/new', (req, res) => {
 // POST - Create
 router.post('/', (req, res) => {
     req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
-
-    // now that we have user specific fruits, we'll add a username/owner upon creation
-    // remember, when we login, we saved the username/owner to the session object
-    // TODO: Need to get a users ._id somehow and change this line
-    //using ._id to set the owner field
     req.body.owner = req.session.userId
 
     Movie.create(req.body)
