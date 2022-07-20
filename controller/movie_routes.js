@@ -79,7 +79,8 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
     const username = req.session.username
     const loggedIn = req.session.loggedIn
-    res.render('movies/homepage', { username, loggedIn })
+    const search = req.session.search
+    res.render('movies/homepage', { username, loggedIn, search })
     // // mongoose to find all fruits
     // Movie.find({})
     //     // return fruits as json

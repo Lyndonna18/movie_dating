@@ -13,21 +13,13 @@ const { application } = require('express')
 ///////////////////////////////////////
 // Seed Code
 ///////////////////////////////////////
-// save my db connection to a variable for easy reference later
+
 const db = mongoose.connection
 
-// this runs the callback function when the db connection is opened from this file
 db.on('open', () => {
-    // array of starter fruits
-    // const startMovies = [
-    //     { name: "Orange", color: "orange", readyToEat: false },
-    //     { name: "Grape", color: "purple", readyToEat: false },
-    //     { name: "Banana", color: "orange", readyToEat: false },
-    //     { name: "Strawberry", color: "red", readyToEat: true },
-    //     { name: "Coconut", color: "brown", readyToEat: true }
-    // ]
-
-    fetch('https://www.omdbapi.com/?apikey=632b0bdc&s=jaws')
+    
+    const search=input.value
+    fetch(`https://www.omdbapi.com/?apikey=632b0bdc&s=${search}`)
         .then(res => res.json())
         .then(data => {
             // when we seed data, we usually clear out the db first
@@ -39,7 +31,7 @@ db.on('open', () => {
                     // now that our delete was successful, we can create our fruits
                     Movie.create(ApiInfo)
                         .then(data => {
-                            console.log('the new movies', data)
+                            console.log(ApiInfo[0])
                             db.close()
                         })
                         .catch(error => {
@@ -52,5 +44,5 @@ db.on('open', () => {
                     db.close()
                 })
         })
-    // whether it's successful or not, we want to close our db connection
+ 
 })

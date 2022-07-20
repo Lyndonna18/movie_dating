@@ -23,10 +23,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse nav-fill" id="navbarNav">
-                <a href="/movies/new" class="nav-link text-light">New 🎬</a>
-                <a href="/movies/mine" class="nav-link text-light">My Movies 📽 </a>
                 <a href="/users/signup" class="nav-link text-light">Sign Up 🎥</a>
                 <a href="/users/login" class="nav-link text-light">Log In 🎞</a>
+                <a href="/movies/new" class="nav-link text-light">New 🎬</a>
+                <a href="/movies/mine" class="nav-link text-light">My Fav Movies 📽 </a>
                 <a href="/users/logout" class="nav-link text-light">Log Out 🎬</a>
                 {% if username %}
                 <a class="nav-link text-primary">Welcome Back, {{username}}</a>
@@ -34,7 +34,7 @@
                 <a class="navbar-brand text-primary">Please log in</a>
                 {% endif %}
             </div>
-              </div>
+        </div>
     </nav>
     <main class="container-md">
         {% block content %}
