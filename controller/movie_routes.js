@@ -29,45 +29,35 @@ router.get('/:id/edit', (req, res) => {
         })
 })
 
-// //SEARCH ROUTE
-// router.post('/search', (req, res) => {
-//     // console.log(req.body, 'working')
-// const search = req.body.title
-//     fetch(`https://www.omdbapi.com/?apikey=632b0bdc&s=${search}`)
-//         .then(res => res.json())
-//         .then(data => {
+router.post('/search_results', async (req, res) => {
+    try {
+        let movie = await fetch(`https://www.omdbapi.com/?apikey=632b0bdc&s=${req.body.title}`)
+        let data = await movie.json()
+        let searchResults = data.Search
+        console.log(data.Search)
+        res.render('movies/search_results', {searchResults})
+    }
+    catch {
+        console.log('test')
+    }
+})
 
-//                     Movie.create(info)
-//                         .then(data => {
-//                             console.log(info)
-//                             db.close()
-//                         })
-//                         .catch(error => {
-//                             console.log('error:', error)
-//                             db.close()
-//                         })
-//                 })
-//                 .catch(error => {
-//                     console.log('error:', error)
-//                     db.close()
-//                 })
-//         })
 
 // PUT - Update
 //localhost:3000/fruits/:id
-router.put('/:id', (req, res) => {
-    const movieId = req.params.id
+// router.put('/:id', (req, res) => {
+//     const movieId = req.params.id
 
-    req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
+//     req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
 
-    movie.findByIdAndUpdate(movieId, req.body, { new: true })
-        .then(movie => {
-            res.redirect(`/movies/${movie._id}`)
-        })
-        .catch(err => {
-            res.json(err)
-        })
-})
+//     movie.findByIdAndUpdate(movieId, req.body, { new: true })
+//         .then(movie => {
+//             res.redirect(`/movies/${movie._id}`)
+//         })
+//         .catch(err => {
+//             res.json(err)
+//         })
+// })
 
 // GET route for displaying my form for create
 router.get('/new', (req, res) => {
@@ -76,21 +66,21 @@ router.get('/new', (req, res) => {
     res.render('movies/new', { username, loggedIn })
 })
 
-// POST - Create
-router.post('/', (req, res) => {
-    req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
-    req.body.owner = req.session.userId
+// // POST - Create
+// router.post('/', (req, res) => {
+//     req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
+//     req.body.owner = req.session.userId
 
-    Movie.create(req.body)
-        .then(movie => {
-            console.log(movie)
-            // res.json(fruit)
-            res.redirect('/movies')
-        })
-        .catch(err => {
-            res.json(err)
-        })
-})
+//     Movie.create(req.body)
+//         .then(movie => {
+//             console.log(movie)
+//             // res.json(fruit)
+//             res.redirect('/movies')
+//         })
+//         .catch(err => {
+//             res.json(err)
+//         })
+// })
 
 // GET - Index
 // localhost:3000/fruits
@@ -132,10 +122,7 @@ router.get('/:id', (req, res) => {
     const movieId = req.params.id
 
     Movie.findById(movieId)
-        // populate our User models fields
-        // comment has an author field and that is the ref to the User model
-        // always going to be a string of the value you want to populate
-        // this also has to be anohter model 
+        
         .populate('comments.author')
         // send back some json
         .then(movie => {

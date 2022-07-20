@@ -1,0 +1,16 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div class="container-md">
+    {% for result in searchResults %}
+
+    <h3>{{result.Title}}</h3>
+    <h3>{{result.Year}}</h3>
+    <h3>{{result.imdbId}}</h3>
+    <img src="{{result.Poster}}">
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

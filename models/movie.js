@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const commentSchema = require('./comment')
 
 const { Schema, model } = mongoose
 
@@ -7,8 +8,11 @@ const movieSchema = new Schema({
     year: String,
     omdbId: String,
     posterImg: String,
-    
+    favorited: Boolean,    
 }, {
+    comments: [commentSchema]
+},
+    {
     timestamps: true    
 })
 
