@@ -1,0 +1,36 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+<div class="container-md">
+    <form action="/movies" method="POST">
+        <fieldset>
+            <legend>Create A New Movie</legend>
+            <label class="form-label">Name:</label>
+            <input 
+                class="form-control" 
+                type="text" 
+                name="name" 
+                placeholder="enter name"
+            >
+            <label class="form-label">Color:</label>
+            <input 
+                class="form-control" 
+                type="text" 
+                name="color" 
+                placeholder="enter color"
+            >
+            <label class="form-label">Ready to Eat?</label>
+            <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="readyToEat"
+            >
+        </fieldset>
+        <input 
+            type="submit" 
+            value="Create New Movie" 
+            class="btn btn-success"
+        >
+    </form>
+</div>
+{% endblock %}

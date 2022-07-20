@@ -1,0 +1,63 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+<div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Welcome to <span class="text-primary">MovieReviewApp!</span></h1>
+            <p class="lead">This is a simple Movie Application that allows you to save your favorite movies and comment
+                on them so other's can see!</p>
+        </div>
+        <hr class="my-6">
+        <h5>Either Search for a new movie or log in to see your favorites list and comments.</h5>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search for a movie by name" aria-label="Search"
+                aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary btn-outline-body" role="button" type="button"
+                    id="button-addon2">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-justify">
+        <div class="row">
+            <img src="https://m.media-amazon.com/images/M/MV5BZGI5ZTU2M2YtZWY4MC00ZDFhLTliYTItZTk1NjdlN2NkMzg2XkEyXkFqcGdeQXVyMjY5ODI4NDk@._V1_SX300.jpg"
+                alt="..." class="img-thumbnail border border-primary rounded-lg col-sm-2" >
+            <img src="https://m.media-amazon.com/images/M/MV5BNzM3NDFhYTAtYmU5Mi00NGRmLTljYjgtMDkyODQ4MjNkMGY2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg"
+                alt="..." class="img-thumbnail border border-primary rounded-lg col-sm-2">
+            <img src="https://m.media-amazon.com/images/M/MV5BYWIzYjFmZTAtNWMxZS00MmVhLTkyYmEtZjkzZWQwMzg0N2ZjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+                alt="..." class="img-thumbnail border border-primary rounded-lg col-sm-2" >
+            <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/TheLastNarutomovie.jpg" alt="..."
+                class="img-thumbnail border border-primary rounded-lg col-sm-2" >
+            <img src="https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg"
+                alt="..." class="img-thumbnail border border-primary rounded-lg col-sm-2" >
+            <img src="https://m.media-amazon.com/images/M/MV5BODUyODM0NjYyNF5BMl5BanBnXkFtZTgwNjAwMDU5NjM@._V1_SY1000_SX640_AL_.jpg"
+                alt="..." class="img-thumbnail border border-primary rounded-lg col-sm-2" >
+        </div>
+    </div>
+
+</div>
+<!-- <h2 class="display-6">Welcome to MovieReviewApp!</h2>
+    <div class="row">
+        {% for movie in movies %}
+        <div class="card" style="width: 18rem">
+            <h5 class="card-header">{{movie.name}}</h5>
+            <div class="card-body">
+                <h6 class="card-title">
+                    {% if movie.readyToEat %}
+                    Ripe
+                    {% else %}
+                    Not Ripe
+                    {% endif %}
+                </h6>
+                <p class="card-text">
+                    The color of this {{movie.name}} is {{movie.color}}
+                </p>
+
+                <a href="/movies/{{movie._id}}" class="btn btn-info">View {{movie.name}}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div> 
+</div> -->
+{% endblock %}
