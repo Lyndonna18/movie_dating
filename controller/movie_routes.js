@@ -16,19 +16,6 @@ router.delete('/:id', (req, res) => {
         })
 })
 
-// GET route for displaying an update form
-router.get('/:id/edit', (req, res) => {
-    const movieId = req.params.id
-
-    Movie.findById(movieId)
-        .then(movie => {
-            res.render('movies/edit', { movie })
-        })
-        .catch(err => {
-            res.json(err)
-        })
-})
-
 router.post('/search_results', async (req, res) => {
     try {
         let movie = await fetch(`https://www.omdbapi.com/?apikey=632b0bdc&s=${req.body.title}`)
@@ -59,28 +46,6 @@ router.post('/search_results', async (req, res) => {
 //         })
 // })
 
-// GET route for displaying my form for create
-router.get('/new', (req, res) => {
-    const username = req.session.username
-    const loggedIn = req.session.loggedIn
-    res.render('movies/new', { username, loggedIn })
-})
-
-// // POST - Create
-// router.post('/', (req, res) => {
-//     req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
-//     req.body.owner = req.session.userId
-
-//     Movie.create(req.body)
-//         .then(movie => {
-//             console.log(movie)
-//             // res.json(fruit)
-//             res.redirect('/movies')
-//         })
-//         .catch(err => {
-//             res.json(err)
-//         })
-// })
 
 // GET - Index
 // localhost:3000/fruits

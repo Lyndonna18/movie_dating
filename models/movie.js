@@ -6,9 +6,13 @@ const { Schema, model } = mongoose
 const movieSchema = new Schema({
     title: String,
     year: String,
-    omdbId: String,
+    imdbId: String,
     posterImg: String,
-    favorited: Boolean,    
+    favorited: {
+        type: Boolean,
+        required: true,
+        default: false
+    }    
 }, {
     comments: [commentSchema]
 },
