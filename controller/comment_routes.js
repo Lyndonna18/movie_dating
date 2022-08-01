@@ -27,8 +27,9 @@ router.post('/:favmovieId', (req, res) => {
 
 router.delete('/delete/:favmovieId/:commId', (req, res) => {
     const favmovieId = req.params.favmovieId
+    console.log("movie id", favmovieId)
     const commId = req.params.commId
-
+    console.log("commid", commId)
     FavMovie.findById(favmovieId)
         .then(favmovie => {
             const comment = favmovie.comments.id(commId)

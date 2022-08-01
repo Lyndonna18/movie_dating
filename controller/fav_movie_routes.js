@@ -75,7 +75,8 @@ router.get('/:id', (req, res) => {
             const userId = req.session.userId
             const username = req.session.username
             const comments = req.session.username
-            console.log("favmovie", favmovie)
+            //console.log("favmovie", favmovie)
+            console.log("favmovie._id", favmovie._id )
             res.render('favmovies/show_one_fav_movie', { favmovie, userId, username})
         })
         .catch(err => {
