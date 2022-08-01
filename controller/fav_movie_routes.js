@@ -70,11 +70,13 @@ router.get('/:id', (req, res) => {
     const favmovieId = req.params.id
     console.log("favmovieId", favmovieId)
     FavMovie.findById(favmovieId)
-        // .populate('comments.author')
+        .populate('comments.author')
         .then(favmovie => {
             const userId = req.session.userId
             const username = req.session.username
-            res.render('favmovies/show_one_fav_movie', { favmovie, userId, username })
+            const comments = req.session.username
+            console.log("favmovie", favmovie)
+            res.render('favmovies/show_one_fav_movie', { favmovie, userId, username})
         })
         .catch(err => {
             res.json(err)
@@ -85,8 +87,8 @@ router.get('/:id', (req, res) => {
 //PUT Route, adds to favorite page
 router.put('/favorites/:id', (req, res) => {
     const imdbId = req.params.id
-    console.log('req.body', req.body)
-    console.log(imdbId)
+    // console.log('req.body', req.body)
+    // console.log(imdbId)
 
     req.body.owner = req.session.userId
 

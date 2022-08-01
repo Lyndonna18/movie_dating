@@ -11,15 +11,12 @@ const FavmovieSchema = new Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
-}, {
+    },
     comments: [commentSchema]
-},
-    {
+}, {
         timestamps: true
-    })
-
-//the collection for all of the Tweet will be lowercase and plural 'tweets'
+})
+    
 const FavMovie = model('FavMovie', FavmovieSchema)
 
 module.exports = FavMovie

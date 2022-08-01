@@ -4,11 +4,14 @@ const FavMovie = require('../models/fav_movie')
 
 //Post create route for comment creation
 router.post('/:favmovieId', (req, res) => {
+    console.log(res.data)
     const favmovieId = req.params.favmovieId
-    console.log('req.params.favmovieId')
+    console.log('req.params.favmovieId', req.params.favmovieId )
     req.body.author = req.body.userId
     FavMovie.findById(favmovieId)
         .then(favmovie => {
+            console.log(favmovie)
+            console.log(favmovie.comments)
             favmovie.comments.push(req.body)
             return favmovie.save()
         })

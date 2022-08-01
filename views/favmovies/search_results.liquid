@@ -9,8 +9,8 @@
     </div>
     {% else%}
     {% for result in searchResults %}
-    <div class="row">
-        <div class="card mb-6" style="max-width: 10rem">
+    <div class="d-flex justify-content-center">
+        <div class="card" style="width: 25rem">
             <h5 class="card-header">{{result.Title}}</h5>
             <div class="card-body">
                 <h6>Year Released: {{result.Year}}</h6>
