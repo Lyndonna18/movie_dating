@@ -1,0 +1,21 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div>
+    <h2 class="display-6">All Favorite Movies</h2>
+    <div class="row">
+        {% for favmovie in favmovies %}
+
+        <div class="card mb-6" style="max-width: 13rem;">
+            <img class="card-img-top" src="{{favmovie.posterImg}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{favmovie.title}}</h5>
+                <p class="card-text"><a href="/favmovies/{{favmovie._id}}" class="btn btn-info">View more Info or Comment</a></p>
+                <p class="card-text"><form action="/favmovies/{{favmovie._id}}?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete?" class="btn btn-danger">
+                </form></p>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+        {% endblock %}

@@ -1,0 +1,34 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div>
+    <h2 class="display-5 justify-content-center">Search Results</h2>
+    {% if searchResults == null || undefined %}
+    <div class="alert alert-danger" role="alert">
+        Returned no movie results. Please check your spelling a punctuation and try again! <a href="/favmovies/"
+            class="alert-link"> Back to Search</a>
+    </div>
+    {% else%}
+    {% for result in searchResults %}
+    <div class="row">
+        <div class="card mb-6" style="max-width: 10rem">
+            <h5 class="card-header">{{result.Title}}</h5>
+            <div class="card-body">
+                <h6>Year Released: {{result.Year}}</h6>
+                <img src="{{result.Poster}}" class="col-sm-5 " alt="">
+                <h6>Type of Media: {{result.Type}}</h6>
+
+                <form action="/favmovies/favorites/" method="POST">
+                    <input type="text" name="title" value="{{result.Title}}" hidden/>
+                    <input type="text" name="year" value={{result.Year}} hidden />
+                    <input type="text" name="imdbId" value={{result.imdbID}} hidden />
+                    <input type="text" name="posterImg" value={{result.Poster}} hidden />
+                    <input type="submit" class="btn btn-info" value="Submit Favorite" />
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

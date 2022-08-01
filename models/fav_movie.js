@@ -3,24 +3,23 @@ const commentSchema = require('./comment')
 
 const { Schema, model } = mongoose
 
-const movieSchema = new Schema({
+const FavmovieSchema = new Schema({
     title: String,
     year: String,
     imdbId: String,
     posterImg: String,
-    favorited: {
-        type: Boolean,
-        required: true,
-        default: false
-    }    
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, {
     comments: [commentSchema]
 },
     {
-    timestamps: true    
-})
+        timestamps: true
+    })
 
 //the collection for all of the Tweet will be lowercase and plural 'tweets'
-const Movie = model('Movie', movieSchema)
+const FavMovie = model('FavMovie', FavmovieSchema)
 
-module.exports = Movie
+module.exports = FavMovie

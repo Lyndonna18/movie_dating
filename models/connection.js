@@ -3,7 +3,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 
 // Fire off the connection to Mongo DB
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.DATABASE_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
