@@ -1,8 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('./connection')
 
-const { Schema, model } = mongoose
-
-const commentSchema = new Schema({
+const commentSchema = new mongoose.Schema({
     note: {
         type: String,
         required: true
@@ -15,7 +13,4 @@ const commentSchema = new Schema({
     timestamps: true
 })
 
-
-const Comment = model('Comment', commentSchema)
-
-module.exports = Comment
+module.exports = commentSchema

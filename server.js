@@ -6,7 +6,7 @@ require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
-const movieRoutes = require('./controller/movie_routes')
+const movieRoutes = require('./controller/fav_movie_routes')
 const userRoutes = require('./controller/user_routes')
 const commentRoutes = require('./controller/comment_routes')
 const fetch = require('node-fetch')
@@ -45,14 +45,14 @@ app.use(
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
-app.use('/movies', movieRoutes)
+app.use('/favmovies', movieRoutes)
 app.use('/users', userRoutes)
 app.use('/comments', commentRoutes)
 
 // localhost:3000/
 app.get('/', (req, res) => {
     // res.send('your server is running, better go catch it')
-    res.redirect('/movies')
+    res.redirect('/favmovies')
 })
 
 ////////////////////////////////////////////
