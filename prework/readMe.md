@@ -34,7 +34,8 @@ I used the Open Movie Database, OMDb API to search through movies. You can find 
 | :--- | :---|
 | /favmovies | homepage, allows user to search for a movie by title |
 | /search_results | search results show page |
-| /mine | shows looged in users favorite movies list |
+| /mine | shows looged in users' favorite movies list |
+| /favmovies:id | shows specific favorite movie |
  
 # Entity Relationship Diagram (ERD)
-![](prework/movie_tracker_ERD.png)
+![](/prework/movie_tracker_ERD.png)
